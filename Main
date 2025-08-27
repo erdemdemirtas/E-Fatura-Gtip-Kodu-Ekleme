@@ -1,0 +1,19 @@
+(* UBL TASARIM (361021) Menüsünden alan eklenicek ve eklenen alana sorgu yazılacak *)
+--------------
+Invoice/Invoiceline/Item/Description
+%%SQL.SELECT S.sto_GtipNo FROM STOKLAR AS S  WHERE S.sto_kod  = (SELECT S1.sth_stok_kod FROM STOK_HAREKETLERI  AS S1 WHERE S1.sth_Guid =@SGuid)%%
+------------------------------------
+
+
+(* BAŞLIK İÇİN BU KOD EKLENİCEK *)
+<th 
+class="tbl_capth tbl_cap stockcode" id="stockcode"  align="left" style="background-color: #EAEDED;">
+<xsl:text>Gtip Kod</xsl:text>
+</th>
+------------------------------------
+(* DEĞER İÇİN BU KOD EKLENİCEK *)
+<td id="lineTableTd">
+<xsl:text>&#160;</xsl:text>
+<xsl:value-of select="./cac:Item/cbc:Description"/>
+</td>
+
